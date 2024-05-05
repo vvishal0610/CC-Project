@@ -8,6 +8,8 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.CrossOrigin;
+
 
 import com.feedback.api.model.Feedback;
 import com.feedback.api.repository.FeedbackRepository;
@@ -26,6 +28,7 @@ public class FeedbackController {
 	}
 	
 	//post feedbacks
+	@CrossOrigin("*")
 	@PostMapping("give-feedback")
 	public Feedback give_feedback(@RequestBody Feedback feedback ) {
 		return feedbackRepo.save(feedback);
