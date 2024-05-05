@@ -1,0 +1,96 @@
+<div class="container"
+     fxLayout="column"
+     fxLayoutGap="10px">
+
+  <div fxFlex>
+    <div>
+      <h3>Feedback Form</h3>
+      <hr>
+    </div>
+  </div>
+
+  <div fxFlex fxFlexOffset="20px" class="form-size">
+    <h3>Submit your Feedback</h3>
+   
+
+    <form novalidate [formGroup]="feedbackForm" #fform="ngForm" (ngSubmit)="onSubmit()">
+      <p>
+        
+        <mat-form-field class="half-width">
+          <input matInput formControlName="studentid" placeholder="Student Id" type="tel" pattern="[0-9]*" required>
+          <mat-error *ngIf="formErrors.studentid">{{formErrors.studentid}}</mat-error>
+        </mat-form-field>
+        <mat-form-field class="half-width">
+          <mat-select placeholder="Current degree" formControlName="degree">
+            <mat-option *ngFor="let ctype of degree" [value]="ctype">
+              {{ ctype }}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+      </p>
+      <p>
+        <mat-form-field class="half-width">
+          <input matInput formControlName="firstname" placeholder="First Name" type="text" required>
+          <mat-error *ngIf="formErrors.firstname">{{formErrors.firstname}}</mat-error>
+        </mat-form-field>
+        <mat-form-field class="half-width">
+          <input matInput formControlName="lastname" placeholder="Last Name" type="text" required>
+          <mat-error *ngIf="formErrors.lastname">{{formErrors.lastname}}</mat-error>
+        </mat-form-field>
+      </p>
+      <p>
+        <mat-form-field class="half-width">
+          <input matInput formControlName="phone" placeholder="Phone Number" type="tel" pattern="[0-9]*" required>
+          <mat-error *ngIf="formErrors.phone">{{formErrors.phone}}</mat-error>
+        </mat-form-field>
+        <mat-form-field class="half-width">
+          <input matInput formControlName="email" placeholder="Email" type="email" email required>
+          <mat-error *ngIf="formErrors.email">{{formErrors.email}}</mat-error>
+        </mat-form-field>
+      </p>
+      <p>
+        <mat-form-field class="half-width">
+          <mat-select placeholder="How much do you like the academics?" formControlName="academics">
+            <mat-option *ngFor="let ctype of academics" [value]="ctype">
+              {{ ctype }}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+        <mat-form-field class="half-width">
+        <mat-select placeholder="How  much do you like the architecture?" formControlName="architecture">
+          <mat-option *ngFor="let ctype of architecture" [value]="ctype">
+            {{ ctype }}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+      </p>      
+     
+      <table class="form-size">
+        
+        
+        <td>
+          <mat-form-field class="full-width">
+          <mat-select placeholder="How do you rate the job opportunities?" formControlName="jobrating">
+            <mat-option *ngFor="let ctype of jobrating" [value]="ctype">
+              {{ ctype }}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+        </td>
+        <td>
+          <mat-slide-toggle formControlName="job">Are you currently working?</mat-slide-toggle>
+        </td>
+        </table>
+      <p>
+        <mat-form-field class="full-width">
+          <textarea matInput formControlName="feedback" placeholder="Additional Feedback" rows=12></textarea>
+        </mat-form-field>
+      </p>
+      <button type="submit" mat-button class="background-primary text-floral-white">Submit</button>
+    </form>
+  </div>
+
+  
+  
+
+</div>
